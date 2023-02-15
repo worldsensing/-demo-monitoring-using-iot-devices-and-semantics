@@ -23,7 +23,7 @@ sh ./manage.sh "api-gateway" "http://backend_api:80/gateways/" \
 sh ./manage.sh "api-node" "http://backend_api:80/nodes/" \
   "api-device-node-route-a" "/api/nodes"
 ## Sensor
-sh ./manage.sh "api-sensor" "http://backend_api:5000/sensors/" \
+sh ./manage.sh "api-sensor" "http://backend_api:80/sensors/" \
   "api-device-sensor-route-a" "/api/sensors"
 ## Software Sensor
 sh ./manage.sh "api-sensor-software" "http://backend_api:80/software-sensors/" \
