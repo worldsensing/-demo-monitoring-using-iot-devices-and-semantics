@@ -8,7 +8,7 @@ usage() {
 
   To rebuild all:
   bash start.sh --rebuild_api_gateway yes --rebuild_docker yes --rebuild_frontend yes \
-  --rebuild_database yes
+  --rebuild_backend_database yes
 
   To rebuild all without modifying the API DB:
   bash start.sh --rebuild_api_gateway yes --rebuild_docker yes --rebuild_frontend yes
@@ -70,12 +70,12 @@ fi
 
 if [ "$rebuild_docker" == "yes" ]; then
   echo "DEPLOY - Rebuilding and pulling docker images"
-  docker-compose build
-  docker-compose pull
+  docker compose build
+  docker compose pull
 fi
 
 echo "DEPLOY - Starting services"
-docker-compose up -d
+docker compose up -d
 cd ./api_gateway || exit
 sh ./wait_for_kong.sh
 

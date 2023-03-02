@@ -10,13 +10,13 @@ clean:
 	@find . -iname "build" | xargs rm -rf 2>/dev/null || true
 
 build: clean
-	docker-compose build ${NAME}
+	docker compose build ${NAME}
 
 start: build
-	docker-compose -f docker-compose.yml up --force-recreate --no-deps ${NAME}
+	docker compose -f docker-compose.yml up --force-recreate --no-deps ${NAME}
 
 setup:
-	docker-compose -f docker-compose.yml up --force-recreate --no-deps postgres pgadmin
+	docker compose -f docker-compose.yml up --force-recreate --no-deps postgres pgadmin
 
 stop:
-	docker-compose -f docker-compose.yml stop
+	docker compose -f docker-compose.yml stop

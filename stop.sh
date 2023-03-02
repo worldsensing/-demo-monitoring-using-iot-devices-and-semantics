@@ -21,4 +21,4 @@ while [ "$1" != "" ]; do
 done
 
 # Run the project
-docker-compose stop
+docker compose stop
