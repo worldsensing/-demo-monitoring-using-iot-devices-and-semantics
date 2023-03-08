@@ -1,23 +1,26 @@
 console.log('Running in mode: ' + process.env.REACT_APP_MODE)
 
+const dev_url = "http://localhost"
+const prod_url = "http://localhost"
+
 const dev = {
   services: {
     api_device: {
-      url_gateway: 'http://localhost:5000/gateways/',
-      url_node: 'http://localhost:5000/nodes/',
-      url_sensor: 'http://localhost:5000/sensors/'
+      url_gateway: dev_url + ':5000/gateways/',
+      url_node: dev_url + ':5000/nodes/',
+      url_sensor: dev_url + ':5000/sensors/'
     },
     api_device_type: {
-      url: 'http://localhost:5000/device-types/'
+      url: dev_url + ':5000/device-types/'
     },
     api_observation: {
-      url: 'http://localhost:5000/observations/'
+      url: dev_url + ':5000/observations/'
     },
     api_graph: {
-      url: 'http://localhost:5000/graph/'
+      url: dev_url + ':5000/graph/'
     },
     grafana: {
-      url: 'http://localhost:3001'
+      url: dev_url + ':3001'
     }
   }
 }
@@ -25,21 +28,21 @@ const dev = {
 const prod = {
   services: {
     api_device: {
-      url_gateway: 'http://localhost:8000/api/gateways/',
-      url_node: 'http://localhost:8000/api/nodes/',
-      url_sensor: 'http://localhost:8000/api/sensors/'
+      url_gateway: prod_url + ':8000/api/gateways/',
+      url_node: prod_url + ':8000/api/nodes/',
+      url_sensor: prod_url + ':8000/api/sensors/'
     },
     api_device_type: {
-      url: 'http://localhost:8000/api/device-types/'
+      url: prod_url + ':8000/api/device-types/'
     },
     api_observation: {
-      url: 'http://localhost:8000/api/observations/'
+      url: prod_url + ':8000/api/observations/'
     },
     api_graph: {
-      url: 'http://localhost:8000/api/graph/'
+      url: prod_url + ':8000/api/graph/'
     },
     grafana: {
-      url: 'http://localhost:8000/grafana'
+      url: prod_url + ':8000/grafana'
     }
   }
 }
