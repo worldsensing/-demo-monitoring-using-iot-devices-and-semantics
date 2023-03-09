@@ -103,7 +103,7 @@ export class ObservationTab extends React.Component {
       <Grid
         container
         spacing={2}
-        justify="center"
+        justifyContent="center"
         alignItems="flex-start"
         style={{ marginTop: '20px' }}
       >

@@ -11,6 +11,7 @@ class ApiServiceBase {
     if (error.response) {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx
+      console.log(error.response)
       console.log(error.response.status)
       let responseMessage = JSON.parse(error.response.request.response)
       console.log(responseMessage.error.code + ' - ' + responseMessage.error.message)

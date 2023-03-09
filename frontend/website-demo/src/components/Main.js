@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import DeviceTab from '../pages/device.js'
 import ObservationTab from '../pages/observation.js'
+import ActionsTab from '../pages/actions.js'
 import GrafanaTab from '../pages/grafana.js'
 import Flow from '../pages/map.js'
 
@@ -14,6 +15,7 @@ class Main extends Component {
         <Routes>
           <Route path="/devices" element={<DeviceTab />} />
           <Route path="/observations" element={<ObservationTab />} />
+          <Route path="/actions" element={<ActionsTab />} />
           <Route path="/grafana" element={<GrafanaTab />} />
           <Route path="/map" element={<Flow />} />
           <Route

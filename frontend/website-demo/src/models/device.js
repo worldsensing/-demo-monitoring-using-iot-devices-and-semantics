@@ -31,8 +31,10 @@ class Node extends Device {
 }
 
 class Sensor extends Device {
-  constructor(name = 'Sample name', type = 'Sample Type', device_type = 'Sample type', location = '', info = '', active = '') {
+  constructor(name = 'Sample name', type = 'Sample Type', device_type = 'Sample type', location = '', info = '', active = '',
+            observable_property = 'Sample Observable Property') {
     super(name, type, device_type, location, info, active)
+    this.observable_property = observable_property
   }
 }
   

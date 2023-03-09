@@ -21,6 +21,11 @@ class Header extends Component {
                 </NavLink>
               </li>
               <li className="nav-item">
+                <NavLink className="nav-link" to="/actions" style={({ isActive }) => ({ fontWeight: isActive ? '600' : '300' })}>
+                  Actions
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink className="nav-link" to="/grafana" style={({ isActive }) => ({ fontWeight: isActive ? '600' : '300' })}>
                   Grafana Monitoring
                 </NavLink>
