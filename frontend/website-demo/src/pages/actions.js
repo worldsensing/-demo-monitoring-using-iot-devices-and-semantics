@@ -22,7 +22,8 @@ export class ObservationTab extends React.Component {
       sensors: [{name:'Loading Sensors...'}],
       selectedSensor: '',
       currentObservation: '',
-      observablePropertySelected: "Observable Property"
+      observablePropertySelected: "Observable Property",
+      consoleValue: "$ "
     }
   }
 
@@ -34,6 +35,12 @@ export class ObservationTab extends React.Component {
 
       this.setState({ sensors: sensorsFromApi })
     })
+  }
+
+  appendToConsole(message) {
+    let newConsoleValue = this.state.consoleValue + " " + message + "\n\n $"
+
+    this.setState({ consoleValue: newConsoleValue })
   }
 
   handleSelectChange(event) {
@@ -49,6 +56,8 @@ export class ObservationTab extends React.Component {
         observableProperty = this.state.sensors[i].observable_property
       }
     }
+    
+    this.appendToConsole("Selected sensor\n"+JSON.stringify(sensorSel))
 
     this.setState({ observablePropertySelected: observableProperty })
   }
@@ -59,11 +68,14 @@ export class ObservationTab extends React.Component {
 
   handleClickAddObservation(event) {
     console.log("Sending Observation...")
+
     const observation = {
       "sensor_name": this.state.selectedSensor.name,
       "observable_property": this.state.observablePropertySelected,
       "value_int": parseInt(this.state.currentObservation)
     }
+
+    this.appendToConsole("Sending Observation\n"+JSON.stringify(observation))
 
     ObservationAPI.addObservation(observation, false, (response) => {
       console.log(response)
@@ -79,41 +91,59 @@ export class ObservationTab extends React.Component {
         alignItems="flex-start"
         style={{ marginTop: '20px' }}
       >
-        <Grid item xs={10} sm={8} md={6}>
+        <Grid item xs={11} sm={8} md={6}>
           <Card sx={{ minWidth: 275 }}>
           <CardContent>
-            <h2>
-              Insert a new Observation
-            </h2>
-            <FormControl fullWidth>
-              <InputLabel id="sensor-select-label">Sensor</InputLabel>
-              <Select
-                labelId="sensor-select-select1"
-                id="sensor-select-select2"
-                value={this.state.selectedSensor}
-                onChange={this.handleSelectChange.bind(this)}
-              >
-                {this.state.sensors.map(function(sensor, i){
-                    return <MenuItem value={sensor} key={i}> {sensor.name} </MenuItem>;
-                })}
-              </Select>
-            </FormControl>
+            <Grid 
+              container
+              spacing={2} 
+              justifyContent="center" 
+              alignItems="flex-start"
+              style={{ marginTop: '20px' }}
+            >
+              <Grid item xs={7} sm={5} md={5}>
+                <h2>
+                  Insert a new Observation
+                </h2>
+                <FormControl fullWidth>
+                  <InputLabel id="sensor-select-label">Sensor</InputLabel>
+                  <Select
+                    labelId="sensor-select-select1"
+                    id="sensor-select-select2"
+                    value={this.state.selectedSensor}
+                    onChange={this.handleSelectChange.bind(this)}
+                  >
+                    {this.state.sensors.map(function(sensor, i){
+                        return <MenuItem value={sensor} key={i}> {sensor.name} </MenuItem>;
+                    })}
+                  </Select>
+                </FormControl>
 
-            <TextField id="input-observable-property-value" 
-              label={this.state.observablePropertySelected} 
-              variant="standard"
-              disabled={true}/>
-            <br/>
-
-            <TextField id="input-observation-value" 
-              label="Input Observation Value" 
-              variant="standard" 
-              onChange={this.handleChangeObservation.bind(this)}/>
-          </CardContent>
-          <CardActions>
-            <Button size="small" 
-              onClick={this.handleClickAddObservation.bind(this)}>Send</Button>
-          </CardActions>
+                <TextField id="input-observable-property-value" 
+                  label={this.state.observablePropertySelected} 
+                  variant="standard"
+                  disabled={true}/>
+                <br/>
+                <TextField id="input-observation-value" 
+                  label="Input Observation Value" 
+                  variant="standard" 
+                  onChange={this.handleChangeObservation.bind(this)}/>
+              </Grid>
+              <Grid item xs={5} sm={7} md={7}>
+                <TextField id="input-console-value" 
+                  label="Console" 
+                  value={this.state.consoleValue}
+                  minRows={4}
+                  inputProps={{ style: { fontFamily: "monospace", fontSize: "14px" } }}
+                  multiline
+                  fullWidth/>
+              </Grid>
+            </Grid>
+            </CardContent>
+            <CardActions>
+              <Button size="small" 
+                onClick={this.handleClickAddObservation.bind(this)}>Send</Button>
+            </CardActions>
           </Card>
         </Grid>
       </Grid>
