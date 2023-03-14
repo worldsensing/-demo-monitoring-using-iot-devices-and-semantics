@@ -1,7 +1,7 @@
 console.log('Running in mode: ' + process.env.REACT_APP_MODE)
 
 const dev_url = "http://localhost"
-const prod_url = "http://localhost"
+const prod_url = "http://34.122.80.205:8000" // EXTERNAL_URL
 
 const dev = {
   services: {

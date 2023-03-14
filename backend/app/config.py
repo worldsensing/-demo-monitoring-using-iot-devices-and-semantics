@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 
+EXTERNAL_URL = "http://34.122.80.205:8000"
+
 
 class Settings:
     POSTGRES_USER: str = os.getenv("POSTGRES_USER", "postgres")
@@ -18,6 +20,7 @@ class Settings:
     cors_origins = [
         "http://localhost:3000",
         "http://localhost:8000",
+        "EXTERNAL_URL"
     ]
 
 
