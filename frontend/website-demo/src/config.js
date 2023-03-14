@@ -28,21 +28,21 @@ const dev = {
 const prod = {
   services: {
     api_device: {
-      url_gateway: prod_url + ':8000/api/gateways/',
-      url_node: prod_url + ':8000/api/nodes/',
-      url_sensor: prod_url + ':8000/api/sensors/'
+      url_gateway: prod_url + '/api/gateways/',
+      url_node: prod_url + '/api/nodes/',
+      url_sensor: prod_url + '/api/sensors/'
     },
     api_device_type: {
-      url: prod_url + ':8000/api/device-types/'
+      url: prod_url + '/api/device-types/'
     },
     api_observation: {
-      url: prod_url + ':8000/api/observations/'
+      url: prod_url + '/api/observations/'
     },
     api_graph: {
-      url: prod_url + ':8000/api/graph/'
+      url: prod_url + '/api/graph/'
     },
     grafana: {
-      url: prod_url + ':8000/grafana'
+      url: prod_url + '/grafana'
     }
   }
 }
